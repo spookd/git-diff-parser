@@ -3,7 +3,7 @@
 ## Install
 I still need to publish the module, so until then, simply do this:
 ```
-npm install git://github.com/spookd/git-diff-parser.git
+npm install git-diff-parser
 ```
 
 ## Introduction
