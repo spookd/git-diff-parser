@@ -3,3 +3,4 @@
 .git*
 Cakefile
 test/
+example/

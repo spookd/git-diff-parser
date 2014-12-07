@@ -42,7 +42,7 @@ class Parser
             @currentCommit.message = matches[3].trim()
 
         else
-          @currentCommit.message += line
+          @currentCommit.message += if line.indexOf(" ") is 0 then line else "\n#{line}"
 
       else if line.indexOf("From ") is 0
         matches = line.match(/^From\s([a-z|0-9]*)\s(\w.*)$/)
@@ -52,11 +52,14 @@ class Parser
           @currentCommit.date = new Date(matches[2])
 
       else if line.indexOf("From: ") is 0
-        matches = line.match(/^From:\s(\w.*)\s\<(\w.*)\>$/)
+        matches = line.match(/^From:\s(.*)\s\<(\w.*)\>$/)
 
         if matches.length is 3
           @currentCommit.author  = matches[1]
           @currentCommit.email = matches[2]
+        else
+          console.log line
+          exit()
 
       else if line.indexOf("Date: ") is 0
         matches = line.match(/^Date:\s(\w.*)$/)
@@ -111,10 +114,10 @@ class Parser
           file.to   = parseFile(matches[2])
 
       else if line.indexOf("+++ ") is 0
-        file.to = parseFile(line.substr(4))
+        file.to = parseFile(line.substr(4)) unless file.to
 
       else if line.indexOf("--- ") is 0
-        file.from = parseFile(line.substr(4))
+        file.from = parseFile(line.substr(4)) unless file.from
 
       else if line is "GIT binary patch"
         file.binary = true
@@ -185,10 +188,6 @@ class Parser
     delete file.to
 
     @currentCommit.files.push(file)
-
-  parseGitVersion: ->
-    console.log "GIT VERSION"
-    @ln++
 
 
 module.exports = exports = (input) ->

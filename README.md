@@ -1,7 +1,6 @@
 # Git diff parser
 
 ## Install
-I still need to publish the module, so until then, simply do this:
 ```
 npm install git-diff-parser
 ```
