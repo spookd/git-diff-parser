@@ -1,0 +1,22 @@
+{
+  "name": "git-diff-parser",
+  "version": "0.1.0",
+  "description": "A simple parser for Git diffs",
+  "homepage": "https://github.com/spookd/git-diff-parser",
+  "repository": "spookd/git-diff-parser",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "git",
+    "diff",
+    "patch",
+    "parse"
+  ],
+  "author": "spookd (http://github.com/spookd)",
+  "license": "MIT",
+  "dependencies": {
+    "coffee-script": "^1.8.0"
+  }
+}

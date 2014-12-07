@@ -1,0 +1,5 @@
+*.html
+.DS_Store
+.git*
+Cakefile
+test/
