@@ -25,9 +25,11 @@ pad = (input = "-", toLeft = false) ->
 
 run = ->
   for commit, i in diff.commits
-    console.log "\n\n" if i isnt 0
+    console.log "\n\n\n" if i isnt 0
     
     console.log "Commit ##{commit.sha} by #{commit.author} <#{commit.email}> at #{commit.date}" if diff.detailed
+    console.log commit.message
+    console.log ""
     
     for file, j in commit.files
       console.log "" if j isnt 0

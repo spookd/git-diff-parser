@@ -35,12 +35,6 @@ class Parser
       if isGettingMessage
         if line.indexOf("---") is 0
           isGettingMessage = false
-
-          # Strip "[PATCH X/X] if any"
-          matches = @currentCommit.message.match(/^\[PATCH\s(\d*)\/(\d*)\](.*)/)
-          if matches.length is 4
-            @currentCommit.message = matches[3].trim()
-
         else
           @currentCommit.message += if line.indexOf(" ") is 0 then line else "\n#{line}"
 
