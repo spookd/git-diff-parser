@@ -73,6 +73,7 @@ class Parser
 
     parseFile = (s) ->
       s = s.trim()
+      if s[0] is '"' then s = s.slice(1, -1)
       # ignore possible time stamp
       t = (/\d{4}-\d\d-\d\d\s\d\d:\d\d:\d\d(.\d+)?\s(\+|-)\d\d\d\d/).exec(s)
       s = s.substring(0, t.index).trim() if t
@@ -101,7 +102,7 @@ class Parser
 
       if line.indexOf("diff ") is 0
         # Git diff?
-        matches = line.match(/^diff\s\-\-git\s(a\/.*)\s(b\/.*)$/)
+        matches = line.match(/^diff\s\-\-git\s("a\/.*"|a\/.*)\s("b\/.*"|b\/.*)$/)
 
         if matches.length is 3
           file.from = parseFile(matches[1])
