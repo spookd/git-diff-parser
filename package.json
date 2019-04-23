@@ -16,7 +16,5 @@
   ],
   "author": "spookd (http://github.com/spookd)",
   "license": "MIT",
-  "dependencies": {
-    "coffee-script": "^1.8.0"
-  }
+  "dependencies": {}
 }
